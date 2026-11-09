@@ -64,3 +64,15 @@ void initReveal() {
 void setBodyScrollLocked(bool locked) {
   web.document.body?.style.overflow = locked ? 'hidden' : '';
 }
+
+/// `Escape` キー押下で [handler] を呼ぶ。戻り値を呼ぶとリスナーを解除する。
+/// モーダルの `initState` で登録し `dispose` で解除する想定。
+void Function() onEscapeKey(void Function() handler) {
+  void listener(web.Event e) {
+    if ((e as web.KeyboardEvent).key == 'Escape') handler();
+  }
+
+  final jsListener = listener.toJS;
+  web.document.addEventListener('keydown', jsListener);
+  return () => web.document.removeEventListener('keydown', jsListener);
+}

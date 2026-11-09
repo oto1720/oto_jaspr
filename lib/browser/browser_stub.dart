@@ -11,3 +11,6 @@ void initReveal() {}
 
 /// 背景スクロールのロック/解除（モーダル表示中に使用）。
 void setBodyScrollLocked(bool locked) {}
+
+/// Escape キー押下で [handler] を呼ぶ。サーバーでは no-op（解除関数も空）。
+void Function() onEscapeKey(void Function() handler) => () {};

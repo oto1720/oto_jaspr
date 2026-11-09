@@ -6,11 +6,13 @@
 
 import 'package:jaspr/server.dart';
 import 'package:oto_jaspr/components/layout.dart' as _layout;
+import 'package:oto_jaspr/components/modal.dart' as _modal;
 import 'package:oto_jaspr/components/navigation.dart' as _navigation;
 import 'package:oto_jaspr/components/page_transition.dart' as _page_transition;
 import 'package:oto_jaspr/components/theme_toggle.dart' as _theme_toggle;
 import 'package:oto_jaspr/pages/contact.dart' as _contact;
 import 'package:oto_jaspr/pages/home.dart' as _home;
+import 'package:oto_jaspr/pages/portfolio.dart' as _portfolio;
 import 'package:oto_jaspr/pages/profile.dart' as _profile;
 
 /// Default [ServerOptions] for use with your Jaspr project.
@@ -36,14 +38,19 @@ ServerOptions get defaultServerOptions => ServerOptions(
     _theme_toggle.ThemeToggle: ClientTarget<_theme_toggle.ThemeToggle>(
       'theme_toggle',
     ),
+    _portfolio.PortfolioPage: ClientTarget<_portfolio.PortfolioPage>(
+      'portfolio',
+    ),
   },
   styles: () => [
     ..._layout.Layout.styles,
+    ..._modal.Modal.styles,
     ..._navigation.Navigation.styles,
     ..._page_transition.PageTransition.styles,
     ..._theme_toggle.ThemeToggle.styles,
     ..._contact.ContactPage.styles,
     ..._home.HomePage.styles,
+    ..._portfolio.PortfolioPage.styles,
     ..._profile.ProfilePage.styles,
   ],
 );
