@@ -65,6 +65,18 @@ void setBodyScrollLocked(bool locked) {
   web.document.body?.style.overflow = locked ? 'hidden' : '';
 }
 
+/// sessionStorage の読み取り（無ければ null）。
+String? sessionGet(String key) => web.window.sessionStorage.getItem(key);
+
+/// sessionStorage への書き込み（容量超過などは無視）。
+void sessionSet(String key, String value) {
+  try {
+    web.window.sessionStorage.setItem(key, value);
+  } catch (_) {
+    // 容量超過・プライベートモード等は無視
+  }
+}
+
 /// `Escape` キー押下で [handler] を呼ぶ。戻り値を呼ぶとリスナーを解除する。
 /// モーダルの `initState` で登録し `dispose` で解除する想定。
 void Function() onEscapeKey(void Function() handler) {

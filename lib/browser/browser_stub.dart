@@ -14,3 +14,9 @@ void setBodyScrollLocked(bool locked) {}
 
 /// Escape キー押下で [handler] を呼ぶ。サーバーでは no-op（解除関数も空）。
 void Function() onEscapeKey(void Function() handler) => () {};
+
+/// sessionStorage 読み取り。サーバーでは常に null。
+String? sessionGet(String key) => null;
+
+/// sessionStorage 書き込み。サーバーでは no-op。
+void sessionSet(String key, String value) {}

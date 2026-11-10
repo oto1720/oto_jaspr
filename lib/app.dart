@@ -3,7 +3,9 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
 import 'components/navigation.dart';
+import 'content/posts_loader.dart';
 import 'pages/blog.dart';
+import 'pages/blog_post.dart';
 import 'pages/contact.dart';
 import 'pages/home.dart';
 import 'pages/portfolio.dart';
@@ -24,8 +26,13 @@ class App extends StatelessComponent {
         Route(path: '/profile', title: 'Profile | oto', builder: (context, state) => const ProfilePage()),
         Route(path: '/portfolio', title: 'Works | oto', builder: (context, state) => const PortfolioPage()),
         Route(path: '/blog', title: 'Blog | oto', builder: (context, state) => const BlogPage()),
-        // NOTE: /blog/:slug はSSGでパスパラメータ非対応のためフェーズ5で
-        // 記事ごとに静的Route（/blog/<slug>）を生成して登録する。
+        // SSG はパスパラメータ非対応のため、記事ごとに静的 Route を生成する。
+        for (final post in getAllPosts())
+          Route(
+            path: '/blog/${post.slug}',
+            title: '${post.title} | Blog',
+            builder: (context, state) => BlogPostPage(slug: post.slug),
+          ),
         Route(path: '/contact', title: 'Contact | oto', builder: (context, state) => const ContactPage()),
       ]),
     ]);

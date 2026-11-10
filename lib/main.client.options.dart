@@ -9,6 +9,7 @@ import 'package:jaspr/client.dart';
 import 'package:oto_jaspr/components/navigation.dart' deferred as _navigation;
 import 'package:oto_jaspr/components/theme_toggle.dart'
     deferred as _theme_toggle;
+import 'package:oto_jaspr/pages/blog.dart' deferred as _blog;
 import 'package:oto_jaspr/pages/portfolio.dart' deferred as _portfolio;
 import 'package:oto_jaspr/pages/profile.dart' deferred as _profile;
 
@@ -38,6 +39,7 @@ ClientOptions get defaultClientOptions => ClientOptions(
       (p) => _theme_toggle.ThemeToggle(),
       loader: _theme_toggle.loadLibrary,
     ),
+    'blog': ClientLoader((p) => _blog.BlogPage(), loader: _blog.loadLibrary),
     'portfolio': ClientLoader(
       (p) => _portfolio.PortfolioPage(),
       loader: _portfolio.loadLibrary,
