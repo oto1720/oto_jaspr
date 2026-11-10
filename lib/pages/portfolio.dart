@@ -41,7 +41,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
   @override
   Component build(BuildContext context) {
     return Layout([
-      div(classes: 'container portfolio', [
+      div(classes: 'container', [
         div(classes: 'page-head', [
           h1(classes: 'page-title', [Component.text('Portfolio')]),
           p(classes: 'page-note', [Component.text('制作物一覧')]),
@@ -161,20 +161,11 @@ class _PortfolioPageState extends State<PortfolioPage> {
 }
 
 final List<StyleRule> _portfolioStyles = [
-  css('.portfolio').styles(raw: {'padding': '8rem 1rem 4rem'}),
-  css('.page-head').styles(raw: {'margin-bottom': '3rem'}),
-  css('.page-title').styles(
-    color: Color('var(--color-text)'),
-    fontWeight: FontWeight.bold,
-    raw: {'font-size': 'clamp(2.25rem,5vw,3rem)', 'letter-spacing': '-0.02em', 'margin': '0'},
-  ),
-  css('.page-note').styles(color: Color('var(--color-text-muted)'), raw: {'margin': '0.75rem 0 0'}),
-
-  // グリッド
+  // グリッド（見出しは app_styles の .page-head/.page-title/.page-note を使用）
   css('.portfolio-grid').styles(
     display: Display.grid,
     gap: Gap.all(1.5.rem),
-    raw: {'grid-template-columns': 'repeat(1, minmax(0, 1fr))'},
+    raw: {'grid-template-columns': 'repeat(1, minmax(0, 1fr))', 'margin-bottom': '4rem'},
   ),
   css.media(MediaQuery.screen(minWidth: 768.px), [
     css('.portfolio-grid').styles(raw: {'grid-template-columns': 'repeat(2, minmax(0, 1fr))'}),

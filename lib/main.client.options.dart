@@ -10,6 +10,7 @@ import 'package:oto_jaspr/components/navigation.dart' deferred as _navigation;
 import 'package:oto_jaspr/components/theme_toggle.dart'
     deferred as _theme_toggle;
 import 'package:oto_jaspr/pages/portfolio.dart' deferred as _portfolio;
+import 'package:oto_jaspr/pages/profile.dart' deferred as _profile;
 
 /// Default [ClientOptions] for use with your Jaspr project.
 ///
@@ -40,6 +41,10 @@ ClientOptions get defaultClientOptions => ClientOptions(
     'portfolio': ClientLoader(
       (p) => _portfolio.PortfolioPage(),
       loader: _portfolio.loadLibrary,
+    ),
+    'profile': ClientLoader(
+      (p) => _profile.ProfilePage(),
+      loader: _profile.loadLibrary,
     ),
   },
 );

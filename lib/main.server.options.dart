@@ -41,6 +41,7 @@ ServerOptions get defaultServerOptions => ServerOptions(
     _portfolio.PortfolioPage: ClientTarget<_portfolio.PortfolioPage>(
       'portfolio',
     ),
+    _profile.ProfilePage: ClientTarget<_profile.ProfilePage>('profile'),
   },
   styles: () => [
     ..._layout.Layout.styles,

@@ -111,6 +111,16 @@ final List<StyleRule> globalStyles = [
     raw: {'overflow': 'hidden', 'transition': 'border-color .3s, box-shadow .3s, transform .3s'},
   ),
 
+  // ページ共通の見出し（各ページの .container 内で使用。水平パディングは
+  // .container 側が持つので縦のみ。上 8rem で固定ナビを避ける）
+  css('.page-head').styles(raw: {'padding': '8rem 0 4rem'}),
+  css('.page-title').styles(
+    color: colorText,
+    fontWeight: FontWeight.bold,
+    raw: {'font-size': 'clamp(2.2rem,6vw,3.2rem)', 'letter-spacing': '-0.02em', 'margin': '0'},
+  ),
+  css('.page-note').styles(color: colorTextMuted, raw: {'margin-top': '0.75rem'}),
+
   // --- Markdown 本文スタイル（blog 記事用） ---
   ...markdownStyles,
 ];
